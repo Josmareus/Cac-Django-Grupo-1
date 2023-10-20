@@ -27,4 +27,18 @@ Crear Django Forms que cumplan:
 
 - [x] Asociado a un template propio.
 
-:tada:
+
+
+### Tercera presentación - semana del 23/10
+
+Actualizar proyecto con:
+
+- [ ] Un formulario usado en una vista basada en clases.
+
+- [ ] Un formulario asociado a un modelo.
+
+- [ ] Al menos dos modelos distintos.
+
+- [ ] En los modelos generados, debe haber al menos una relación de uno a muchos y una relación de muchos a muchos.
+
+- [ ] Usar la base de datos PostgreSQL.

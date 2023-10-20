@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %} Listado Actos Jurídicos {% endblock %}
+
+{% block content %}
+
+<header class="custom-header">
+    <h1>Lista de Actos Jurídicos</h1>
+    <a class="btn btn-round" href="{% url 'crear_acto_juridico' %}" role="button">Ingresar Acto Jurídico</a>
+  </header>
+
+  <div class="table-responsive text-center d-flex justify-content-center">
+    <table class="table table-sm table-striped table-bordered align-middle">
+      <thead>
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Acto Jurídico</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        {% for acto in actos_juridicos %}
+          <tr>
+            <td>{{ acto.id }}</td>
+            <td>{{ acto.nombre|upper }}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Acciones">
+                <a href="{% url 'actualizar_acto_juridico' acto.id %}" role="button" class="btn btn-round btn-primary">Actualizar</a>
+                <a href="{% url 'eliminar_acto_juridico' acto.id %}" role="button" class="btn btn-round btn-danger">Eliminar</a>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
+
+
+
+
+

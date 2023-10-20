@@ -18,7 +18,19 @@ class ActoJuridico(models.Model):
 
 
 class Escribano(models.Model):
+
+    class caracterChoices(models.TextChoices):
+        TITU='Titular', _('Titular')
+        ADSC='Adscripto', _('Adscripto')
+
     escribano=models.CharField(max_length=150)
+    caracter = models.CharField(
+        max_length=50,
+        choices=caracterChoices.choices,
+        default=caracterChoices.TITU,
+        verbose_name="Carácter"
+    )
+    actos_juridicos=models.ManyToManyField(ActoJuridico, through="ActoEscribano",blank=True, verbose_name="Actos Jurídicos")
 
     class Meta:
         ordering = ['escribano']
@@ -43,3 +55,8 @@ class Escritura(models.Model):
 
     def __str__(self):
         return '{} - {} - {}'.format(self.pk, self.fecha, self.aceptante)
+
+
+class ActoEscribano(models.Model):
+    acto=models.ForeignKey(ActoJuridico,on_delete=models.CASCADE,null=True,blank=True, verbose_name="Acto Jurídico")
+    escribano=models.ForeignKey(Escribano,on_delete=models.CASCADE,null=True,blank=True, verbose_name="Escribano")

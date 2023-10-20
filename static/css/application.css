@@ -3,7 +3,7 @@
 body {
   height: 100%;
   width: 100%;
-  background: #ffffff;
+  background: #d8d7d7;
   min-height: 100vh;
   min-height: -webkit-fill-available;
   min-width: 100vh;
@@ -18,6 +18,20 @@ main {
   /* padding-top: 20vh; */
 }
 
+#intro {
+  position: relative;
+  text-align: center;
+  margin: 0 0 25px 0;
+}
+#intro-titles {
+  position: absolute;
+  top: 37%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  color: gray;
+  font-weight: 600;
+}
 
 .navbar {
   color: white;
@@ -34,6 +48,11 @@ main {
 h1, h2 {
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+  margin-top: 40px;
+  margin-left: 40px;
 }
 
 /* Animación encabezado */
@@ -56,6 +75,28 @@ h1, h2 {
   margin-top: 15px;
   animation: scaleIn 0.5s ease-in-out; /* Agregar animación scaleIn de 1 segundo */
 }
+
+
+/* Estilo para el encabezado "ESCRIBANIA GROUP ONE" */
+/* header h1 {
+  margin-left: 20px;
+} */
+
+/* Estilo para la sección "Sistema de Administración y Consultas de Escrituras" */
+section {
+  margin-left: 20px;
+}
+
+/* Estilo para el párrafo "Funciones disponibles" */
+section p {
+  margin-left: 25px;
+}
+
+/* Estilo para la lista no ordenada */
+section ul {
+  margin-left: 25px;
+}
+
 
 @keyframes fadeInUp {
   0% {
@@ -89,18 +130,24 @@ h1, h2 {
 }
 
 
-.boton-actualizar {
-  background-color: #3498db; /* Color de fondo normal */
-  color: #ffffff; /* Color de texto */
-  padding: 10px 20px; /* Ajusta el padding según tus necesidades */
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s; /* Agrega una transición suave de color de fondo */
+/* botón desplegable  */
+.custom-dropdown {
+  background-color: #a18a41; 
+  color: #ffffff; 
+  border: 1px solid #0e0d0d; 
+
 }
 
 
 .btn-round {
+  background-color: #a18a41 !important; /* !important para prioridad */
+  color: #ffffff;
+  padding: 10px 20px;
   border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-
+.btn-round:hover {
+  background-color: #a18a41 !important; /* !important para prioridad */
+}

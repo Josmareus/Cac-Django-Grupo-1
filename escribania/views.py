@@ -3,6 +3,15 @@ from .models import Escribano, ActoJuridico
 from .forms import EscribanoForm, ActoJuridicoForm
 from django.contrib import messages
 from django.urls import reverse
+from django.views.generic import (
+    CreateView,
+    ListView,
+    UpdateView,
+    DetailView,
+    TemplateView,
+    DeleteView,
+    View,
+)
 
 
 
@@ -21,7 +30,7 @@ def crear_escribano(request):
             return redirect(reverse("index"))
     else:
         form = EscribanoForm()
-    return render(request, 'crear_escribano.html', {'form': form})
+    return render(request, 'escribania/templates/escribania/escribano_form.html', {'form': form})
 
 # LISTAR Escribanos
 # def listar_escribanos(request):
@@ -53,12 +62,12 @@ def crear_acto_juridico(request):
             return redirect('listar_actos_juridicos')
     else:
         form = ActoJuridicoForm()
-    return render(request, 'crear_acto_juridico.html', {'form': form})
+    return render(request, 'escribania/templates/escribania/actojuridico_form.html', {'form': form})
 
 # LISTAR ActosJuridicos
 def listar_actos_juridicos(request):
     actos_juridicos = ActoJuridico.objects.all()
-    return render(request, 'listar_actos_juridicos.html', {'actos_juridicos': actos_juridicos})
+    return render(request, 'escribania/templates/escribania/actojuridico_list.html', {'actos_juridicos': actos_juridicos})
 
 # ACTUALIZAR un ActoJuridico
 def actualizar_acto_juridico(request, pk):
@@ -70,4 +79,4 @@ def actualizar_acto_juridico(request, pk):
             return redirect('listar_actos_juridicos')
     else:
         form = ActoJuridicoForm(instance=acto_juridico)
-    return render(request, 'crear_acto_juridico.html', {'form': form, 'acto_juridico': acto_juridico})
+    return render(request, 'escribania/templates/escribania/actojuridico_form.html', {'form': form, 'acto_juridico': acto_juridico})

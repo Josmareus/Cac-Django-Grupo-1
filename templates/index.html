@@ -3,17 +3,22 @@
 {% block title %} Inicio {% endblock %}
 
 {% block content %}
-
-  <header>
-    <h1>ESCRIBANIA GROUP ONE</h1>
+  {% load static %}
+  
+  <header id="intro">
+    <img src="{% static 'imagen/escribania1.jpg' %}" alt="imagen de escribania1" style="width: 100%; max-height: 350px;">
+    <div id="intro-titles">
+      <h1>ESCRIBANIA GROUP ONE</h1>
+      <h2 class="mt-5 pt-5">Sistema de Administración y Consultas de Escrituras</h2>
+    </div>
   </header>
-  <section>
-    <h2>Sistema de gestión interno</h2>
+  <section class="m-0">
     <p>Funciones disponibles</p>
     <ul>
       <li><a href="#">Ingresar Escrituras</a></li>
       <li><a href="#">Consultar Escrituras</a></li>
     </ul>
   </section>
-
 {% endblock %}
+
+
