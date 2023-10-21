@@ -30,7 +30,6 @@ class Escribano(models.Model):
         default=caracterChoices.TITU,
         verbose_name="Carácter"
     )
-    actos_juridicos=models.ManyToManyField(ActoJuridico, through="ActoEscribano",blank=True, verbose_name="Actos Jurídicos")
 
     class Meta:
         ordering = ['escribano']
@@ -46,7 +45,7 @@ class Escritura(models.Model):
     fecha=models.DateField(verbose_name="Fecha de Escritura")
     escribano=models.ForeignKey(Escribano, on_delete=models.CASCADE, null=True, blank=True)
     folio=models.SmallIntegerField(null=True, blank=True)
-    acto=models.ForeignKey(ActoJuridico, on_delete=models.CASCADE, null=True, blank=True, verbose_name="Acto Jurídico")
+    acto=models.ManyToManyField(ActoJuridico, through="ActoEscritura", blank=True, verbose_name="Acto Jurídico")
     otorgante=models.CharField(max_length=300)
     aceptante=models.CharField(max_length=300)
 
@@ -57,6 +56,6 @@ class Escritura(models.Model):
         return '{} - {} - {}'.format(self.pk, self.fecha, self.aceptante)
 
 
-class ActoEscribano(models.Model):
+class ActoEscritura(models.Model):
     acto=models.ForeignKey(ActoJuridico,on_delete=models.CASCADE,null=True,blank=True, verbose_name="Acto Jurídico")
-    escribano=models.ForeignKey(Escribano,on_delete=models.CASCADE,null=True,blank=True, verbose_name="Escribano")
+    escritura=models.ForeignKey(Escritura,on_delete=models.CASCADE,null=True,blank=True, verbose_name="Escritura")

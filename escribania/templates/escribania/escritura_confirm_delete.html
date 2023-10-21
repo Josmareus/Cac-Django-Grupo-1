@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
-{% block title %} Confirma Eliminar Acto Jurídico? {% endblock %}
+{% block title %} Confirma Eliminar Escritura? {% endblock %}
 
 {% block content %}
   <header>
-    <h1>Confirmar Eliminar Acto Jurídico</h1>
+    <h1>Confirmar Eliminar Escritura</h1>
   </header>
 
-  <p>¿Estás seguro de que deseas eliminar el Acto Jurídico "{{ object.nombre }}"?</p>
+  <p>¿Estás seguro de que deseas eliminar la Escritura nº "{{ escritura.id }}"?</p>
 
   <form method="post">
     {% csrf_token %}

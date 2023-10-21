@@ -1,21 +1,20 @@
 {% extends "base.html" %}
+
+{% block title %} Nueva Escritura {% endblock %}
+
 {% block content %}
 
-    <header>
-        <h1>Consulta de Escrituras</h1>
-    </header>
-    <main>
-      
-        <form>
-            <label for="numero_escritura">Número de Escritura:</label>
-            <input type="text" id="numero_escritura" name="numero_escritura" placeholder="Ingrese el número de escritura">
-            <button type="submit">Buscar</button>
-        </form>
-       
-        <div class="resultados">
-            <!-- Los resultados se mostrarían aquí -->
-        </div>
-    </main>
+  <header>
+    <h1 class="text-center">Ingresar Escritura</h1>
+  </header>
 
+  <div class="d-flex justify-content-center align-items-center" style="min-height: 40vh;">
+    <form method="post" class="w-50">
+      {% csrf_token %}
+      
+      {{ form.as_p }}  
+      <button type="submit" class="btn btn-primary btn-round">Guardar</button>
+    </form>
+  </div>
 
 {% endblock %}

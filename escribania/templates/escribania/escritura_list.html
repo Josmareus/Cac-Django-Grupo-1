@@ -1,15 +1,49 @@
 {% extends "base.html" %}
+
+{% block title %} Listado Escrituras {% endblock %}
+
 {% block content %}
 
-  <header>
-    <h1>Consulta de Escrituras</h1>
-  </header>
+<header class="custom-header">
+  <h1>Lista de Escrituras</h1>
+  <a class="btn btn-round" href="{% url 'crear_escritura' %}" role="button">Ingresar Nueva Escritura</a>
+</header>
 
-  <form>
-    <label for="numero_escritura">Número de Escritura:</label>
-    <input type="text" id="numero_escritura" name="numero_escritura" placeholder="Ingrese el número de escritura">
-    <button type="submit">Buscar</button>
-  </form>
+<div class="table-responsive text-center d-flex justify-content-center">
+  <table class="table table-sm table-striped table-bordered align-middle">
+    <thead>
+      <tr>
+        <th scope="col">Número</th>
+        <th scope="col">Fecha de Escritura</th>
+        <th scope="col">Escribano</th>
+        <th scope="col">Folio</th>
+        <th scope="col">Acto Jurídico</th>
+        <th scope="col">Otorgante</th>
+        <th scope="col">Aceptante</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      {% for escritura in escrituras %}
+        <tr>
+          <td>{{ escritura.id }}</td>
+          <td>{{ escritura.fecha }}</td>
+          <td>{{ escritura.escribano|upper }}</td>
+          <td>{{ escritura.folio }}</td>
+          <td>{{ escritura.acto }}</td>
+          <td>{{ escritura.otorgante }}</td>
+          <td>{{ escritura.aceptante }}</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Acciones">
+              <a href="{% url 'actualizar_escritura' escritura.id %}" role="button" class="btn btn-round btn-primary">Actualizar</a>
+              <a href="{% url 'eliminar_escritura' escritura.id %}" role="button" class="btn btn-round btn-danger">Eliminar</a>
+            </div>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 
 
 {% endblock %}

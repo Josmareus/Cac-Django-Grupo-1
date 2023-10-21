@@ -1,82 +1,84 @@
-from django.shortcuts import render, redirect
-from .models import Escribano, ActoJuridico
-from .forms import EscribanoForm, ActoJuridicoForm
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView, TemplateView
+from django.urls import reverse_lazy
 from django.contrib import messages
-from django.urls import reverse
-from django.views.generic import (
-    CreateView,
-    ListView,
-    UpdateView,
-    DetailView,
-    TemplateView,
-    DeleteView,
-    View,
-)
+from .models import Escribano, ActoJuridico, Escritura
+from .forms import EscribanoForm, ActoJuridicoForm
 
 
 
-def index(request):
-    return render(request, "index.html")
+class IndexView(TemplateView):
+    template_name = "index.html"
 
 
-# ----- Escribanos -----
+# ---- Escribanos ----
+class CrearEscribanoView(CreateView):
+    model = Escribano
+    form_class = EscribanoForm
+    # template_name = 'escribania/templates/escribania/escribano_form.html'
+    success_url = reverse_lazy("index")
 
-# Vista para CREAR un Escribano
-def crear_escribano(request):
-    if request.method == 'POST':
-        form = EscribanoForm(request.POST)
-        if form.is_valid():
-            messages.info(request, "Escribano cargado exitosamente.")
-            return redirect(reverse("index"))
-    else:
-        form = EscribanoForm()
-    return render(request, 'escribania/templates/escribania/escribano_form.html', {'form': form})
+    def form_valid(self, form):
+        messages.info(self.request, "Escribano cargado exitosamente.")
+        return super().form_valid(form)
 
-# LISTAR Escribanos
-# def listar_escribanos(request):
-#     escribanos = Escribano.objects.all()
-#     return render(request, 'listar_escribanos.html', {'escribanos': escribanos})
+class ListarEscribanosView(ListView):
+    model = Escribano
+    # template_name = 'listar_escribanos.html'
+    context_object_name = 'escribanos'
 
-# ACTUALIZAR un Escribano
-# def actualizar_escribano(request, pk):
-#     escribano = Escribano.objects.get(pk=pk)
-#     if request.method == 'POST':
-#         form = EscribanoForm(request.POST, instance=escribano)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('listar_escribanos')
-#     else:
-#         form = EscribanoForm(instance=escribano)
-#     return render(request, 'actualizar_escribano.html', {'form': form, 'escribano': escribano})
+class ActualizarEscribanoView(UpdateView):
+    model = Escribano
+    form_class = EscribanoForm
+    # template_name = 'actualizar_escribano.html'
+    success_url = reverse_lazy("listar_escribanos")
+
+class EliminarEscribanoView(DeleteView):
+    model = Escribano
+
+    def get_success_url(self):
+        return reverse_lazy("listar_escribanos")
 
 
+# ---- Actos Jurídicos ----
+class CrearActoJuridicoView(CreateView):
+    model = ActoJuridico
+    form_class = ActoJuridicoForm
+    # template_name = 'escribania/templates/escribania/actojuridico_form.html'
+    success_url = reverse_lazy("listar_actos_juridicos")
 
-# ----- Actos Jurídicos -----
+class ListarActosJuridicosView(ListView):
+    model = ActoJuridico
+    # template_name = 'escribania/templates/escribania/actojuridico_list.html'
+    context_object_name = 'actos_juridicos'
 
-# CREAR un ActoJuridico
-def crear_acto_juridico(request):
-    if request.method == 'POST':
-        form = ActoJuridicoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('listar_actos_juridicos')
-    else:
-        form = ActoJuridicoForm()
-    return render(request, 'escribania/templates/escribania/actojuridico_form.html', {'form': form})
+class ActualizarActoJuridicoView(UpdateView):
+    model = ActoJuridico
+    form_class = ActoJuridicoForm
+    # template_name = 'escribania/templates/escribania/actojuridico_form.html'
+    success_url = reverse_lazy("listar_actos_juridicos")
 
-# LISTAR ActosJuridicos
-def listar_actos_juridicos(request):
-    actos_juridicos = ActoJuridico.objects.all()
-    return render(request, 'escribania/templates/escribania/actojuridico_list.html', {'actos_juridicos': actos_juridicos})
+class EliminarActoJuridicoView(DeleteView):
+    model = ActoJuridico
+    success_url = reverse_lazy("listar_actos_juridicos")
 
-# ACTUALIZAR un ActoJuridico
-def actualizar_acto_juridico(request, pk):
-    acto_juridico = ActoJuridico.objects.get(pk=pk)
-    if request.method == 'POST':
-        form = ActoJuridicoForm(request.POST, instance=acto_juridico)
-        if form.is_valid():
-            form.save()
-            return redirect('listar_actos_juridicos')
-    else:
-        form = ActoJuridicoForm(instance=acto_juridico)
-    return render(request, 'escribania/templates/escribania/actojuridico_form.html', {'form': form, 'acto_juridico': acto_juridico})
+
+
+
+# ---- Escrituras ----
+class CrearEscrituraView(CreateView):
+    model = Escritura
+    fields = '__all__'
+    success_url = reverse_lazy("listar_escrituras")
+
+class ListarEscrituraView(ListView):
+    model = Escritura
+    context_object_name = 'escrituras'
+
+class ActualizarEscrituraView(UpdateView):
+    model = Escritura
+    fields = '__all__'
+    success_url = reverse_lazy("listar_escrituras")
+
+class EliminarEscrituraView(DeleteView):
+    model = Escritura
+    success_url = reverse_lazy("listar_actos_juridicos")
