@@ -33,12 +33,14 @@ Crear Django Forms que cumplan:
 
 Actualizar proyecto con:
 
-- [ ] Un formulario usado en una vista basada en clases.
+- [x] Un formulario usado en una vista basada en clases.
 
-- [ ] Un formulario asociado a un modelo.
+- [x] Un formulario asociado a un modelo.
 
-- [ ] Al menos dos modelos distintos.
+- [x] Al menos dos modelos distintos.
 
-- [ ] En los modelos generados, debe haber al menos una relación de uno a muchos y una relación de muchos a muchos.
+- [x] En los modelos generados, debe haber al menos una relación de uno a muchos y una relación de muchos a muchos.
 
-- [ ] Usar la base de datos PostgreSQL.
+- [x] Usar la base de datos PostgreSQL.
+
+:tada:
