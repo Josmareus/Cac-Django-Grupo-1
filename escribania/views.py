@@ -14,7 +14,6 @@ class IndexView(TemplateView):
 class CrearEscribanoView(CreateView):
     model = Escribano
     form_class = EscribanoForm
-    # template_name = 'escribania/templates/escribania/escribano_form.html'
     success_url = reverse_lazy("index")
 
     def form_valid(self, form):
@@ -23,13 +22,11 @@ class CrearEscribanoView(CreateView):
 
 class ListarEscribanosView(ListView):
     model = Escribano
-    # template_name = 'listar_escribanos.html'
     context_object_name = 'escribanos'
 
 class ActualizarEscribanoView(UpdateView):
     model = Escribano
     form_class = EscribanoForm
-    # template_name = 'actualizar_escribano.html'
     success_url = reverse_lazy("listar_escribanos")
 
 class EliminarEscribanoView(DeleteView):
@@ -43,18 +40,15 @@ class EliminarEscribanoView(DeleteView):
 class CrearActoJuridicoView(CreateView):
     model = ActoJuridico
     form_class = ActoJuridicoForm
-    # template_name = 'escribania/templates/escribania/actojuridico_form.html'
     success_url = reverse_lazy("listar_actos_juridicos")
 
 class ListarActosJuridicosView(ListView):
     model = ActoJuridico
-    # template_name = 'escribania/templates/escribania/actojuridico_list.html'
     context_object_name = 'actos_juridicos'
 
 class ActualizarActoJuridicoView(UpdateView):
     model = ActoJuridico
     form_class = ActoJuridicoForm
-    # template_name = 'escribania/templates/escribania/actojuridico_form.html'
     success_url = reverse_lazy("listar_actos_juridicos")
 
 class EliminarActoJuridicoView(DeleteView):

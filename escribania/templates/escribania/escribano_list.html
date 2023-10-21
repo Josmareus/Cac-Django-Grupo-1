@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %} Listado Escribanos {% endblock %}
+
+{% block content %}
+
+<header class="custom-header">
+    <h1>Lista de Escribanos</h1>
+    <a class="btn btn-round" href="{% url 'crear_escribano' %}" role="button">Ingresar Escribano</a>
+  </header>
+
+  <div class="table-responsive text-center d-flex justify-content-center">
+    <table class="table table-sm table-striped table-bordered align-middle">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Escribano</th>
+          <th scope="col">Carácter</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        {% for escribano in escribanos %}
+          <tr>
+            <td>{{ escribano.id }}</td>
+            <td>{{ escribano.escribano|upper }}</td>
+            <td>{{ escribano.caracter|upper }}</td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Acciones">
+                <a href="{% url 'actualizar_escribano' escribano.id %}" role="button" class="btn btn-round btn-primary">Actualizar</a>
+                <a href="{% url 'eliminar_escribano' escribano.id %}" role="button" class="btn btn-round btn-danger">Eliminar</a>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
