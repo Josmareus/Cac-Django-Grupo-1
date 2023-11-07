@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingreso</title>
+    
+  {% load static %}
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+
+  <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+</head>
+<body class="text-center">
+
+  <main class="form-signin w-100 m-auto">
+    <form method="post" action="."> {% csrf_token %}
+      <div class="container d-flex align-items-center">
+        <img src="{% static 'imagen/escribania.jpg' %}" class="img-login" alt="card1">
+        <h1 class="h3 mb-3 fw-normal pt-4 pb-3">Escribanía Group One</h1>
+      </div>
+
+      <h1 class="h4 mb-3 fw-normal py-3">Ingrese sus datos para acceder</h1>
+
+      {% if form.errors %}
+        <div class="error-msg">
+          <p>Usuario o contraseña incorrectos. Recuerde que ambos campos son sensibles a mayúsculas/minúsculas.</p>
+        </div>
+      {% endif %}
+
+      {% if next %}
+        {% if user.is_authenticated %}
+          <div class="error-msg">
+            <p>Tu cuenta no tiene el acceso requerido para esta página. Para proceder, por favor solicita acceso a administración.</p>
+          </div>
+          {% else %}
+          <p>Debe registrarse para ver este sitio.</p>
+        {% endif %}
+      {% endif %}
+            
+            {% for fm in form %}
+              <div class="row mb-2">
+                <div class="col-4">
+                  <label>{{fm.label}}</label>
+                </div>
+                <div  class="col-7">
+                  {{fm}}
+                </div>
+              </div>
+            {% endfor %}
+
+      <input type="submit" value="Ingresar" class="btn btn-enter">
+
+    </form>
+  </main>
+
+</body>
+</html>

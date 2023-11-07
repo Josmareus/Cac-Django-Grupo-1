@@ -3,18 +3,62 @@
 {% block title %} Nueva Escritura {% endblock %}
 
 {% block content %}
-
-  <header>
-    <h1 class="text-center">Ingresar Escritura</h1>
-  </header>
-
-  <div class="d-flex justify-content-center align-items-center" style="min-height: 40vh;">
-    <form method="post" class="w-50">
-      {% csrf_token %}
-      
-      {{ form.as_p }}  
-      <button type="submit" class="btn btn-primary btn-round">Guardar</button>
-    </form>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-md-6 formulario-coloreado">
+        <h1 class="text-center">Ingresar Escritura</h1>
+        <div class="card">
+          <div class="card-body">
+            <form method="post">
+              {% csrf_token %}
+              <div class="form-group row">
+                <label for="{{ form.fecha.id_for_label }}" class="col-sm-4 col-form-label">Fecha de Escritura</label>
+                <div class="col-sm-8">
+                  {{ form.fecha }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="{{ form.escribano.id_for_label }}" class="col-sm-4 col-form-label">Escribano</label>
+                <div class="col-sm-8">
+                  {{ form.escribano }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="{{ form.folio.id_for_label }}" class="col-sm-4 col-form-label">Folio</label>
+                <div class="col-sm-8">
+                  {{ form.folio }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="{{ form.acto.id_for_label }}" class="col-sm-4 col-form-label">Acto Jurídico</label>
+                <div class="col-sm-8">
+                  {{ form.acto }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="{{ form.otorgante.id_for_label }}" class="col-sm-4 col-form-label">Otorgante</label>
+                <div class="col-sm-8">
+                  {{ form.otorgante }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="{{ form.aceptante.id_for_label }}" class="col-sm-4 col-form-label">Aceptante</label>
+                <div class="col-sm-8">
+                  {{ form.aceptante }}
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-sm-12 text-center">
+                  <button type="submit" class="btn btn-primary btn-round">Guardar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
 {% endblock %}
+
+
+

@@ -14,6 +14,7 @@ from email.policy import default
 from decouple import Csv, config
 from pathlib import Path
 import os
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -114,6 +115,12 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+LOGIN_REDIRECT_URL = reverse_lazy("index")
+LOGIN_URL = reverse_lazy("auth_login")
+LOGOUT_REDIRECT_URL = reverse_lazy("auth_login")
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 
 # Internationalization

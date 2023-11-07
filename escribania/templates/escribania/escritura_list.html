@@ -30,7 +30,12 @@
           <td>{{ escritura.fecha }}</td>
           <td>{{ escritura.escribano|upper }}</td>
           <td>{{ escritura.folio }}</td>
-          <td>{{ escritura.acto }}</td>
+          <td>
+            {% for acto in escritura.acto.all %}
+              {{ acto.nombre }}
+              {% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </td>
           <td>{{ escritura.otorgante }}</td>
           <td>{{ escritura.aceptante }}</td>
           <td>

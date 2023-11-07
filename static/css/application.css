@@ -151,3 +151,20 @@ section ul {
 .btn-round:hover {
   background-color: #a18a41 !important; /* !important para prioridad */
 }
+
+
+/* Estilos formulario  ESCRITURA*/
+.custom-form {
+  margin-top: 1rem;
+}
+
+.formulario-coloreado {
+  background-color: #a18a41; /* color de fondo deseado */
+  padding: 90px; /* Relleno para separar el contenido del fondo */
+  border-radius: 5px; /* esquinas redondeadas  */
+  
+}
+/* Sombra en el contenedor del formulario */
+.contact-wrapper {
+  box-shadow: 0 0 20px 0 rgba(60, 60, 60, 0.3);
+} 

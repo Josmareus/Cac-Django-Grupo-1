@@ -43,4 +43,16 @@ Actualizar proyecto con:
 
 - [x] Usar la base de datos PostgreSQL.
 
+
+
+### Cuarta presentación - semana del 06/11
+
+Actualizar proyecto con:
+
+- [x] Acceso a Django Admin.
+
+- [x] Manejo de modelos desde Django Admin.
+
+- [x] Autenticación mediante  Django Authentication, con validación en backend y frontend.
+
 :tada:

@@ -4,6 +4,11 @@ from .models import *
 
 # Register your models here.
 
+class ActoEscrituraInline(admin.TabularInline):
+    model = ActoEscritura
+    extra = 1
+
+
 @admin.register(ActoJuridico)
 class ActoJuridicoAdmin(admin.ModelAdmin):
     pass
@@ -14,4 +19,4 @@ class EscribanoAdmin(admin.ModelAdmin):
 
 @admin.register(Escritura)
 class EscrituraAdmin(admin.ModelAdmin):
-    pass
+    inlines = [ActoEscrituraInline]

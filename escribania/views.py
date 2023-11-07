@@ -1,4 +1,5 @@
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView, TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .models import Escribano, ActoJuridico, Escritura
@@ -6,12 +7,12 @@ from .forms import EscribanoForm, ActoJuridicoForm
 
 
 
-class IndexView(TemplateView):
-    template_name = "index.html"
+# class IndexView(TemplateView):
+#     template_name = "index.html"
 
 
 # ---- Escribanos ----
-class CrearEscribanoView(CreateView):
+class CrearEscribanoView(LoginRequiredMixin, CreateView):
     model = Escribano
     form_class = EscribanoForm
     success_url = reverse_lazy("index")
@@ -20,16 +21,16 @@ class CrearEscribanoView(CreateView):
         messages.info(self.request, "Escribano cargado exitosamente.")
         return super().form_valid(form)
 
-class ListarEscribanosView(ListView):
+class ListarEscribanosView(LoginRequiredMixin, ListView):
     model = Escribano
     context_object_name = 'escribanos'
 
-class ActualizarEscribanoView(UpdateView):
+class ActualizarEscribanoView(LoginRequiredMixin, UpdateView):
     model = Escribano
     form_class = EscribanoForm
     success_url = reverse_lazy("listar_escribanos")
 
-class EliminarEscribanoView(DeleteView):
+class EliminarEscribanoView(LoginRequiredMixin, DeleteView):
     model = Escribano
 
     def get_success_url(self):
@@ -37,21 +38,21 @@ class EliminarEscribanoView(DeleteView):
 
 
 # ---- Actos Jurídicos ----
-class CrearActoJuridicoView(CreateView):
+class CrearActoJuridicoView(LoginRequiredMixin, CreateView):
     model = ActoJuridico
     form_class = ActoJuridicoForm
     success_url = reverse_lazy("listar_actos_juridicos")
 
-class ListarActosJuridicosView(ListView):
+class ListarActosJuridicosView(LoginRequiredMixin, ListView):
     model = ActoJuridico
     context_object_name = 'actos_juridicos'
 
-class ActualizarActoJuridicoView(UpdateView):
+class ActualizarActoJuridicoView(LoginRequiredMixin, UpdateView):
     model = ActoJuridico
     form_class = ActoJuridicoForm
     success_url = reverse_lazy("listar_actos_juridicos")
 
-class EliminarActoJuridicoView(DeleteView):
+class EliminarActoJuridicoView(LoginRequiredMixin, DeleteView):
     model = ActoJuridico
     success_url = reverse_lazy("listar_actos_juridicos")
 
@@ -59,20 +60,20 @@ class EliminarActoJuridicoView(DeleteView):
 
 
 # ---- Escrituras ----
-class CrearEscrituraView(CreateView):
+class CrearEscrituraView(LoginRequiredMixin, CreateView):
     model = Escritura
     fields = '__all__'
     success_url = reverse_lazy("listar_escrituras")
 
-class ListarEscrituraView(ListView):
+class ListarEscrituraView(LoginRequiredMixin, ListView):
     model = Escritura
     context_object_name = 'escrituras'
 
-class ActualizarEscrituraView(UpdateView):
+class ActualizarEscrituraView(LoginRequiredMixin, UpdateView):
     model = Escritura
     fields = '__all__'
     success_url = reverse_lazy("listar_escrituras")
 
-class EliminarEscrituraView(DeleteView):
+class EliminarEscrituraView(LoginRequiredMixin, DeleteView):
     model = Escritura
     success_url = reverse_lazy("listar_actos_juridicos")

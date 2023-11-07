@@ -16,10 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from escribania import views
+from django.views.generic import TemplateView
+from django.contrib.auth.decorators import (
+    permission_required,
+    login_required,
+    user_passes_test,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.IndexView.as_view(), name='index'),
+    path("", login_required(TemplateView.as_view(template_name="index.html")), name="index"),
     path('app/',include('escribania.urls')),
+    path('users/',include('users.urls')),
 ]
