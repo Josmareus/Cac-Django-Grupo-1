@@ -160,7 +160,7 @@ section ul {
 
 .formulario-coloreado {
   background-color: #a18a41; /* color de fondo deseado */
-  padding: 90px; /* Relleno para separar el contenido del fondo */
+  padding:60px; /* Relleno para separar el contenido del fondo */
   border-radius: 5px; /* esquinas redondeadas  */
   
 }

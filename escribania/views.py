@@ -12,26 +12,30 @@ from .forms import EscribanoForm, ActoJuridicoForm
 
 
 # ---- Escribanos ----
-class CrearEscribanoView(LoginRequiredMixin, CreateView):
+class CrearEscribanoView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Escribano
     form_class = EscribanoForm
     success_url = reverse_lazy("index")
+    permission_required = "escribania.add_escribano"
 
     def form_valid(self, form):
         messages.info(self.request, "Escribano cargado exitosamente.")
         return super().form_valid(form)
 
-class ListarEscribanosView(LoginRequiredMixin, ListView):
+class ListarEscribanosView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     model = Escribano
     context_object_name = 'escribanos'
+    permission_required = "escribania.view_escribano"
 
-class ActualizarEscribanoView(LoginRequiredMixin, UpdateView):
+class ActualizarEscribanoView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Escribano
     form_class = EscribanoForm
     success_url = reverse_lazy("listar_escribanos")
+    permission_required = "escribania.change_escribano"
 
-class EliminarEscribanoView(LoginRequiredMixin, DeleteView):
+class EliminarEscribanoView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Escribano
+    permission_required = "escribania.delete_escribano"
 
     def get_success_url(self):
         return reverse_lazy("listar_escribanos")
