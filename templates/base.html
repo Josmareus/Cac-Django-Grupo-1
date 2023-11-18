@@ -15,10 +15,12 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand fixed-top" data-bs-theme="dark" style="background-color: #a18a41;">
+  <nav class="navbar navbar-expand fixed-top" data-bs-theme="dark" style="background: linear-gradient(to bottom, #998300, rgba(100, 100, 100, 0.3));">
     <a class='navbar-brand px-3' up-follow href='/'>Inicio</a>
     <div class="navbar-nav px-2">
+      {% if perms.escribania.view_escribano %}
       <a class='nav-item nav-link' href="{% url 'listar_escribanos' %}">Escribanos</a>
+      {% endif %}
       <a class='nav-item nav-link' href="{% url 'listar_actos_juridicos' %}">Actos Juridicos</a>
       <a class='nav-item nav-link' href="{% url 'auth_logout' %}">Cerrar sesion</a>
     </div>
@@ -32,13 +34,13 @@
     </ul> 
   {% endif %}
 
-  <main class="mt-5">
+  <main>
     {% block content %}
     
     {% endblock %}
   </main>
 
-  <div class="footer mt-auto" style="background-color: #a18a41; color: white; position: fixed; bottom: 0; width: 100%;">
+  <div class="footer mt-auto" style="background: linear-gradient(to bottom, #998300, rgba(100, 100, 100, 0.3)); color: white; position: fixed; bottom: 0; width: 100%;">
     <footer class="d-flex flex-wrap justify-content-center align-items-center py-3 my-1 border-top">
       <div class="col-md-4 d-flex align-items-center">
         <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">

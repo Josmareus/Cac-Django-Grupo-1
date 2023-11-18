@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .models import Escribano, ActoJuridico, Escritura
-from .forms import EscribanoForm, ActoJuridicoForm
+from .forms import EscribanoForm, ActoJuridicoForm, EscrituraForm
 
 
 
@@ -66,7 +66,8 @@ class EliminarActoJuridicoView(LoginRequiredMixin, DeleteView):
 # ---- Escrituras ----
 class CrearEscrituraView(LoginRequiredMixin, CreateView):
     model = Escritura
-    fields = '__all__'
+    # fields = '__all__'
+    form_class = EscrituraForm
     success_url = reverse_lazy("listar_escrituras")
 
 class ListarEscrituraView(LoginRequiredMixin, ListView):

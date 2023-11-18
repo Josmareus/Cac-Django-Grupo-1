@@ -15,6 +15,7 @@ main {
   min-width: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
+  margin-top: 55px;
   /* padding-top: 20vh; */
 }
 
@@ -159,12 +160,34 @@ section ul {
 }
 
 .formulario-coloreado {
-  background-color: #a18a41; /* color de fondo deseado */
-  padding:60px; /* Relleno para separar el contenido del fondo */
-  border-radius: 5px; /* esquinas redondeadas  */
-  
+  padding: 40px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
 }
-/* Sombra en el contenedor del formulario */
-.contact-wrapper {
-  box-shadow: 0 0 20px 0 rgba(60, 60, 60, 0.3);
-} 
+/*  gradiente y foto de fondo */
+.formulario-coloreado::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(161, 138, 65, 0.7), #f5f5f5), url('/static/imagen/escribania2.jpg');
+  background-position: center top;
+}
+
+.form-group {
+  margin: 5px 0;
+}
+
+.titulo-escritura {
+  position: relative;
+  z-index: 10;
+}
+
+#tabla-escritura {
+  width: 90vw;
+  min-width: 90vw;
+}
