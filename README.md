@@ -55,4 +55,14 @@ Actualizar proyecto con:
 
 - [x] Autenticación mediante  Django Authentication, con validación en backend y frontend.
 
+
+
+### Quinta presentación - semana del 20/11
+
+
+- [x] Últimos detalles.
+
+- [x] Revisión final.
+
+
 :tada:

@@ -191,3 +191,24 @@ section ul {
   width: 90vw;
   min-width: 90vw;
 }
+
+.inicio-grupo {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.inicio-grupo h2 {
+  padding-left: 2.1vw;
+}
+.inicio-grupo ul {
+  list-style: none;
+  padding-left: 0;
+}
+.boton-inicio {
+  background-color: #a18a41;
+  margin-top: 2vh;
+  width: 21vw;
+}
+.boton-inicio:hover {
+  background-color: #b69d4b;
+}

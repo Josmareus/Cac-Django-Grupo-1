@@ -12,11 +12,11 @@
       <h2 class="mt-5 pt-5">Sistema de Administración y Consultas de Escrituras</h2>
     </div>
   </header>
-  <section class="m-0">
-    <p>Funciones disponibles</p>
+  <section class="m-0 inicio-grupo">
+    <h2 class="h3">Funciones disponibles</h2>
     <ul>
-      <li><a href="{% url 'crear_escritura' %}">Ingresar Escrituras</a></li>
-      <li><a href="{% url 'listar_escrituras' %}">Consultar Escrituras</a></li>
+      <li><a class="btn boton-inicio" href="{% url 'crear_escritura' %}">Ingresar Escrituras</a></li>
+      <li><a class="btn boton-inicio" href="{% url 'listar_escrituras' %}">Consultar Escrituras</a></li>
     </ul>
   </section>
 {% endblock %}
