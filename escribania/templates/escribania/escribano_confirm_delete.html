@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %} Confirma Eliminar Escribano? {% endblock %}
+
+{% block content %}
+  <header>
+    <h1>Confirmar Eliminar Escribano</h1>
+  </header>
+
+  <p>¿Estás seguro de que deseas eliminar al Escribano "{{ escribano.escribano }}"?</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-round">Confirmar Eliminación</button>
+  </form>
+{% endblock %}

@@ -7,10 +7,6 @@ from .forms import EscribanoForm, ActoJuridicoForm, EscrituraForm
 
 
 
-# class IndexView(TemplateView):
-#     template_name = "index.html"
-
-
 # ---- Escribanos ----
 class CrearEscribanoView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Escribano
@@ -81,4 +77,4 @@ class ActualizarEscrituraView(LoginRequiredMixin, UpdateView):
 
 class EliminarEscrituraView(LoginRequiredMixin, DeleteView):
     model = Escritura
-    success_url = reverse_lazy("listar_actos_juridicos")
+    success_url = reverse_lazy("listar_escrituras")
